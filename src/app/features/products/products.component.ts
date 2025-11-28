@@ -27,8 +27,13 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProductsData(pageNumber: number = 1): void {
+    // Scroll to top with smooth behavior
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     this.isLoading = true;
-    this.errorMessage = '';
     this.productsService.getAllProducts(pageNumber).subscribe({
       next: (res: any) => {
         this.productsList = (res?.data ?? []) as Product[];

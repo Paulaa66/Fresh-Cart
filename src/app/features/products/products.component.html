@@ -1,8 +1,6 @@
-<section class="container space-y-6 max-w-screen-xl my-6">
+<section class="container space-y-6 max-w-7xl my-6">
   <header class="space-y-1">
-    <h2 class="text-2xl font-semibold text-[var(--main-color)]">
-      All Products
-    </h2>
+    <h2 class="text-2xl font-semibold text-(--main-color)">All Products</h2>
     <p class="text-slate-500">
       Handpicked items, great prices, trusted ratings.
     </p>
@@ -19,7 +17,7 @@
       class="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden"
     >
       <!-- Image placeholder area -->
-      <div class="aspect-[4/3] bg-slate-100"></div>
+      <div class="aspect-4/3 bg-slate-100"></div>
       <!-- Text placeholder lines -->
       <div class="p-4 space-y-2">
         <div class="h-4 w-3/4 bg-slate-200 rounded animate-pulse"></div>
@@ -32,7 +30,7 @@
   }
 
   <!-- Grid displayed When data is loaded from API -->
-  @if(!isLoading && !errorMessage){
+  @else if(!isLoading && !errorMessage){
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
   >
