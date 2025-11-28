@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@utility container {
+  margin-inline: auto;
+}
+
+@layer components {
+  .btn {
+    @apply disabled:bg-gray-500 disabled:cursor-not-allowed bg-green-700 text-white py-1.5 cursor-pointer transition-all  hover:bg-green-900;
+  }
+  .color-btn {
+    @apply w-8 h-8 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer;
+  }
+}
+
+:root {
+  --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Encode Sans Expanded", sans-serif;
+  --rating-color: #ffc908;
+}
+/* ========== Start Button Main Style ========== */
+.btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
+  -ms-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+.btn-main:hover {
+  background-color: #11bd11;
+}
+/* ========== End Button Main Style ==========*/
+
+/* ========== Start Card ==========*/
+.card {
+  @apply overflow-hidden rounded-lg border-2  border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg;
+}
+
+/* ========== End Card ==========*/

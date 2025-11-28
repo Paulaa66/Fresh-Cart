@@ -1,0 +1,42 @@
+<article
+  class="group/card relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg cursor-pointer"
+>
+  <div [routerLink]="['/details', product.slug, product._id || product.id]">
+    <div
+      class="aspect-[3/2] md:aspect-[1/1] relative bg-slate-50 overflow-hidden"
+    >
+      <img
+        class="w-full h-full md:object-cover object-contain transition-transform duration-300 group-hover/card:scale-105"
+        [src]="product.imageCover"
+        [alt]="product.title"
+      />
+      <span
+        class="absolute top-2 left-2 rounded-md bg-slate-950/40 px-2 py-1 text-xs font-medium text-white backdrop-blur"
+      >
+        {{ product.category.name }}
+      </span>
+    </div>
+    <div class="p-4">
+      <h3
+        class="text-slate-900 text-xl sm:text-base font-medium line-clamp-1"
+        [title]="product.title"
+      >
+        {{ product.title }}
+      </h3>
+
+      <div class="mt-2 flex items-center justify-between text-sm">
+        <span class="font-semibold text-lg text-slate-900">
+          {{ product.price | currency : "EGP " : "symbol" }}
+        </span>
+        <span class="text-slate-500" title="Rating">
+          <span class="text-amber-500">&#9733;</span>
+          {{ product.ratingsAverage | number : "1.1-1" }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn translate-y-full group-hover/card:translate-0">
+    <i class="fa-solid fa-basket-shopping"></i> Add To Cart
+  </button>
+</article>

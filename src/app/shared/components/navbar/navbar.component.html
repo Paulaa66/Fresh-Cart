@@ -1,0 +1,366 @@
+<nav class="bg-white border-b border-gray-200">
+  <!-- Instalment Panner (kept as is) -->
+  <div
+    class="instalment-panner bg-[url('/images/instalmentsAD.jpg')] h-[70px] w-full bg-[var(--main-color)] bg-blend-screen animate-slide"
+  ></div>
+
+  <!-- Top utility bar (like EgyptLaptop small strip) -->
+  <div class="hidden md:block border-b border-gray-100 bg-gray-50">
+    <div
+      class="max-w-screen-xl mx-auto px-4 py-1 text-[13px] flex items-center justify-between text-gray-600"
+    >
+      <div class="flex items-center gap-4 w-full justify-between">
+        <span class="font-semibold text-[var(--main-color)]">
+          Free shipping on orders over 10,000 EGP
+        </span>
+        <a
+          href="#"
+          class="hover:text-[var(--main-color)] transition-colors pe-2.5"
+        >
+          Our Stores
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Social icons moved here on desktop -->
+        <a
+          href="https://www.facebook.com/PoulaaGerges"
+          class="hover:text-blue-600"
+        >
+          <i class="fa fa-brands fa-facebook"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/paula_gerges/"
+          class="hover:text-pink-600"
+        >
+          <i class="fa fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://x.com/" class="hover:text-cyan-400">
+          <i class="fa fa-brands fa-twitter"></i>
+        </a>
+        <a
+          href="https://www.tiktok.com/@paulagerges66"
+          class="hover:text-black"
+        >
+          <i class="fa fa-brands fa-tiktok"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main row: logo + search + actions -->
+  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center gap-3">
+    <!-- Logo -->
+    <a
+      routerLink="/home"
+      class="flex items-center space-x-3 rtl:space-x-reverse"
+    >
+      <img
+        class="h-10 md:h-12 w-auto max-w-[200px]"
+        src="/images/freshcart-logo.svg"
+        alt="Fresh cart logo"
+      />
+    </a>
+
+    <!-- Search (desktop) -->
+    <form class="hidden md:flex flex-1 max-w-xl relative">
+      <span
+        class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400 text-sm"
+      >
+        <i class="fa fa-search"></i>
+      </span>
+      <input
+        type="text"
+        placeholder="Search for products, brands, categories..."
+        class="w-full rounded-full border border-gray-300 bg-white ps-9 pe-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
+      />
+    </form>
+
+    <!-- Right actions -->
+    <div class="flex items-center gap-2 md:gap-4 ms-auto">
+      <!-- Mobile search icon -->
+      <button
+        type="button"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-600"
+        aria-label="Search"
+        data-collapse-toggle="mobile-search"
+      >
+        <i class="fa fa-search text-sm"></i>
+      </button>
+
+      <!-- Account / Auth -->
+      @if (isLoginIn === false) {
+      <a
+        routerLink="/login"
+        class="hidden md:flex items-center gap-1 text-sm text-gray-600 hover:text-[var(--main-color)]"
+      >
+        <i class="fa fa-regular fa-user text-base"></i>
+        <span>Login</span>
+      </a>
+      <a
+        routerLink="/register"
+        class="hidden md:flex items-center gap-1 text-sm text-gray-600 hover:text-[var(--main-color)]"
+      >
+        <i class="fa fa-regular fa-user-plus text-base"></i>
+        <span>Register</span>
+      </a>
+      } @else {
+      <button
+        type="button"
+        class="hidden md:flex items-center gap-1 text-sm text-gray-600 hover:text-[var(--main-color)]"
+        (click)="logOut()"
+      >
+        <i class="fa fa-regular fa-user text-base"></i>
+        <span>Sign Out</span>
+      </button>
+      }
+
+      <!-- Cart -->
+      <a
+        routerLink="/cart"
+        class="relative flex items-center justify-center w-9 h-9 rounded-full border border-gray-200 text-gray-700 hover:text-[var(--main-color)] hover:border-[var(--main-color)]"
+      >
+        <i class="fa fa-shopping-cart text-sm"></i>
+        <!-- Example badge -->
+        <span
+          class="absolute -top-1 -right-1 bg-[var(--main-color)] text-white text-[10px] leading-none rounded-full px-1.5 py-0.5"
+        >
+          <!-- @if(cartCount > 0){
+          {{ cartCount }}
+          } -->
+        </span>
+      </a>
+
+      <!-- Mobile burger -->
+      <button
+        data-collapse-toggle="navbar-dropdown"
+        type="button"
+        class="inline-flex items-center p-2 w-9 h-9 justify-center text-sm text-gray-600 rounded-full md:hidden border border-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        aria-controls="navbar-dropdown"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile search bar -->
+  <div id="mobile-search" class="md:hidden hidden border-t border-gray-200">
+    <div class="max-w-screen-xl mx-auto px-4 py-2">
+      <form class="relative">
+        <span
+          class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400 text-sm"
+        >
+          <i class="fa fa-search"></i>
+        </span>
+        <input
+          type="text"
+          placeholder="Search..."
+          class="w-full rounded-full border border-gray-300 bg-white ps-9 pe-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--main-color)] focus:border-[var(--main-color)]"
+        />
+      </form>
+    </div>
+  </div>
+
+  <!-- Bottom nav: Categories + main links (desktop) + collapsible menu (mobile) -->
+  <div class="border-t border-gray-200 bg-gray-50">
+    <div
+      class="max-w-screen-xl mx-auto px-4 py-2 flex items-center gap-4 text-sm font-medium text-gray-700"
+    >
+      <!-- Categories button -->
+      <button
+        id="dropdownNavbarLink"
+        data-dropdown-toggle="dropdownNavbar"
+        class="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[var(--main-color)] text-white text-sm shadow-sm hover:bg-emerald-700 transition-colors"
+      >
+        <i class="fa fa-bars text-xs"></i>
+        <span>All Categories</span>
+        <svg
+          class="w-2.5 h-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+
+      <!-- Desktop main links -->
+      <ul
+        class="hidden md:flex items-center gap-5 ms-1 text-[13px] uppercase tracking-wide"
+      >
+        <li>
+          <a
+            routerLink="/home"
+            routerLinkActive="text-[var(--main-color)]"
+            class="block py-2"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/products"
+            routerLinkActive="text-[var(--main-color)]"
+            class="block py-2"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/brands"
+            routerLinkActive="text-[var(--main-color)]"
+            class="block py-2"
+            >Brands</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="text-[var(--main-color)]"
+            class="block py-2"
+            >Cart</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/categories"
+            routerLinkActive="text-[var(--main-color)]"
+            class="block py-2"
+            >Categories</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Categories dropdown content -->
+    <div
+      id="dropdownNavbar"
+      class="z-30 hidden font-normal bg-white divide-y divide-gray-100 rounded-b-lg shadow-lg w-full md:max-w-sm md:absolute md:left-1/2 md:-translate-x-1/2"
+    >
+      <ul class="py-2 text-sm text-gray-700">
+        <li>
+          <a routerLink="/dashboard" class="block px-4 py-2 hover:bg-gray-100"
+            >Dashboard</a
+          >
+        </li>
+        <li>
+          <a routerLink="/settings" class="block px-4 py-2 hover:bg-gray-100"
+            >Settings</a
+          >
+        </li>
+        <li>
+          <a routerLink="/earnings" class="block px-4 py-2 hover:bg-gray-100"
+            >Earnings</a
+          >
+        </li>
+      </ul>
+      <div class="py-2 px-4">
+        @if (isLoginIn === false) {
+        <a
+          routerLink="/login"
+          class="block text-sm text-[var(--main-color)] hover:underline"
+          >Sign in</a
+        >
+        } @else {
+        <button
+          type="button"
+          class="block text-sm text-red-500 hover:underline"
+          (click)="logOut()"
+        >
+          Sign out
+        </button>
+        }
+      </div>
+    </div>
+
+    <!-- Mobile collapsible menu: links + auth (reusing your logic) -->
+    <div id="navbar-dropdown" class="md:hidden hidden border-t border-gray-200">
+      <ul class="flex flex-col font-medium p-4 gap-1">
+        <li>
+          <a
+            routerLink="/home"
+            routerLinkActive="bg-[var(--main-color)] text-white"
+            class="block py-2 px-3 rounded-sm text-gray-700 hover:bg-gray-100"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/products"
+            routerLinkActive="bg-[var(--main-color)] text-white"
+            class="block py-2 px-3 rounded-sm text-gray-700 hover:bg-gray-100"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/brands"
+            routerLinkActive="bg-[var(--main-color)] text-white"
+            class="block py-2 px-3 rounded-sm text-gray-700 hover:bg-gray-100"
+            >Brands</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="bg-[var(--main-color)] text-white"
+            class="block py-2 px-3 rounded-sm text-gray-700 hover:bg-gray-100"
+            >Cart</a
+          >
+        </li>
+
+        @if (isLoginIn === false) {
+        <li class="mt-2 border-t pt-2">
+          <a
+            routerLink="/login"
+            routerLinkActive="bg-[var(--main-color)] text-white"
+            class="block py-2 px-3 rounded-sm text-gray-700 hover:bg-gray-100"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/register"
+            routerLinkActive="bg-[var(--main-color)] text-white"
+            class="block py-2 px-3 rounded-sm text-gray-700 hover:bg-gray-100"
+            >Register</a
+          >
+        </li>
+        } @else {
+        <li class="mt-2 border-t pt-2">
+          <button
+            type="button"
+            (click)="logOut()"
+            class="w-full text-left py-2 px-3 rounded-sm text-red-500 hover:bg-gray-100"
+          >
+            Sign Out
+          </button>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

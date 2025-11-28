@@ -1,0 +1,50 @@
+<section class="container space-y-6 max-w-screen-xl my-6">
+  <header class="space-y-1">
+    <h2 class="text-2xl font-semibold text-[var(--main-color)]">
+      Discover Products
+    </h2>
+    <p class="text-slate-500">
+      Handpicked items, great prices, trusted ratings.
+    </p>
+  </header>
+
+  <!-- Skeleton Grid displayed while data is loading from API -->
+  @if (isLoading) {
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+  >
+    <!-- Loop through skeleton placeholders -->
+    @for (n of skeletons; track $index) {
+    <div
+      class="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden"
+    >
+      <!-- Image placeholder area -->
+      <div class="aspect-[4/3] bg-slate-100"></div>
+      <!-- Text placeholder lines -->
+      <div class="p-4 space-y-2">
+        <div class="h-4 w-3/4 bg-slate-200 rounded animate-pulse"></div>
+        <div class="h-3 w-1/2 bg-slate-200 rounded animate-pulse"></div>
+      </div>
+    </div>
+    }
+  </div>
+
+  }
+
+  <!-- Grid displayed When data is loaded from API -->
+  @if(!isLoading && !errorMessage){
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+  >
+    @for (product of productsList.slice(0,8); track product._id || product.id) {
+
+    <app-product-card [product]="product" />
+    }
+  </div>
+
+  } @else {
+  <div class="rounded-xl border border-red-200 bg-red-50 text-red-700 p-4">
+    {{ errorMessage }}
+  </div>
+  }
+</section>
